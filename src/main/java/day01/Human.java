@@ -6,10 +6,20 @@ public class Human {
     private int yearOfBirth;
 
     public Human(String firstname, String lastname, int yearOfBirth) {
-        this.name = firstname+ " " +lastname;
-        this.yearOfBirth = yearOfBirth;
-        if (yearOfBirth<1901) {
-            throw new IllegalArgumentException("120 évesnél idősebb:" +yearOfBirth+ " éves, ez hiba.");
+        NameValidator nv = new NameValidator();
+        YearOfBirthValidator yobv = new YearOfBirthValidator();
+
+        if (yobv.isYearOfBirthValid(yearOfBirth) && nv.isNameValid(name)) {
+            this.name = firstname + " " + lastname;
+            this.yearOfBirth = yearOfBirth;
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 }

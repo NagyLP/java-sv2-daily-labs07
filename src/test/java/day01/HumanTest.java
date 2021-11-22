@@ -7,12 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HumanTest {
 
-    Human human = new Human("James", "Bond", 1950);
+    @BeforeEach
+    void setUp() {
+    }
 
     @Test
-    public void testAddHumanInvalidHuman() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new Human("Dzsémsz", "Bond", 1900));
-        assertEquals("Note must be between 1 and 5!", exception.getMessage());
+    void createHumanWithWrongYear() {
+        assertThrows(IllegalAccessException.class, ()-> new Human("John", "Doe", 1900));
+    }
+
+    @Test
+    void getYearOfBirth() {
     }
 }
