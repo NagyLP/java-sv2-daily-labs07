@@ -8,7 +8,7 @@ public class Human {
     public Human(String firstname, String lastname, int yearOfBirth) {
         this.name = firstname+ " " +lastname;
         this.yearOfBirth = yearOfBirth;
-        if (yearOfBirth>120) {
+        if (yearOfBirth<1901) {
             throw new IllegalArgumentException("120 évesnél idősebb:" +yearOfBirth+ " éves, ez hiba.");
         }
     }
