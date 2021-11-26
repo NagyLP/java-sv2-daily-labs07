@@ -14,6 +14,11 @@ public class Product {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return name + ";" + sellDate + ";" + price;
+    }
+
     public String getName() {
         return name;
     }
