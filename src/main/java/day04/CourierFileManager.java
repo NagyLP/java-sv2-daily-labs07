@@ -20,6 +20,7 @@ public class CourierFileManager {
         Courier courier = new Courier();
         for (String item : lines) {
             String[] parts = item.split(" ");
-        } return createCourier(lines);
+            courier.addRide(new Ride(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Double.parseDouble(parts[2])));
+        } return courier;
     }
 }
