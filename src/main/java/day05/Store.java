@@ -39,20 +39,20 @@ public class Store {
         } catch (IOException ioe) {
             throw new IllegalArgumentException("Hiba", ioe);
         }
+    }
 
-        private List<String> createStringByMonth (Month month){
-            List<String> result = new ArrayList<>();
+    private List<String> createStringByMonth(Month month) {
+        List<String> result = new ArrayList<>();
 
-            for (Product item : productList) {
-                if (item.getSellDate().getMonth() == month) {
-                    result.add(item.toString());
-                }
+        for (Product item : productList) {
+            if (item.getSellDate().getMonth() == month) {
+                result.add(item.toString());
             }
-            return result;
         }
+        return result;
+    }
 
-        public List<Product> getProductList () {
-            return productList;
-        }
+    public List<Product> getProductList() {
+        return productList;
     }
 }
