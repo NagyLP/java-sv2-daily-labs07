@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 
 class StoreTest {
 
-    Store store = new Store();
+    Store store = new Store(new ArrayList<>());
 
     @TempDir
     File tempFolder;
@@ -28,7 +29,8 @@ class StoreTest {
     void weiteToFileByMonthTest() throws IOException {
         Path path = tempFolder.toPath().resolve("result.txt");
 
-        Path resultPath = store.(Month.NOVEMBER, path);
+//        Path resultPath = store.(Month.NOVEMBER, path);
+
 
     }
 
