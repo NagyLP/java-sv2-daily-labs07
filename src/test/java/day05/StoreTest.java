@@ -6,14 +6,17 @@ import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class StoreTest {
 
-    Store store = new Store(new ArrayList<>());
+    Store store = new Store();
 
     @TempDir
     File tempFolder;
@@ -21,17 +24,22 @@ class StoreTest {
     @BeforeEach
     void init() {
         store.addProduct(new Product("T-shirt", LocalDate.of(2021, 11, 12), 3000));
-        store.addProduct(new Product("T-shirt", LocalDate.of(2021, 11, 15), 2000));
-        store.addProduct(new Product("T-shirt", LocalDate.of(2021, 11, 12), 4000));
+        store.addProduct(new Product("Trousers", LocalDate.of(2021, 11, 15), 2000));
+        store.addProduct(new Product("T-shirt", LocalDate.of(2021, 10, 12), 3500));
     }
+
 
     @Test
-    void weiteToFileByMonthTest() throws IOException {
+    void writeToFileByMonthTest() throws IOException {
         Path path = tempFolder.toPath().resolve("result.txt");
 
-//        Path resultPath = store.(Month.NOVEMBER, path);
+        Path resultPath = store.productWriteFile(Month.NOVEMBER, path);
 
+        List<String> result = Files.readAllLines(path);
+
+        assertEquals("Trousers",result.get(1).split(";")[0]);
+        assertEquals(2, result.size());
+        assertEquals("soldProducts_NOVEMBER.csv",resultPath.toString());
 
     }
-
 }
